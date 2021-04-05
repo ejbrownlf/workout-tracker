@@ -11,7 +11,11 @@ module.exports = () => {
                 res.status(400).json(err)
             })
     });
+
     router.post('/workouts');
+
     router.put('/workouts',);
+
     router.get('/workouts/range');
+    
 }
