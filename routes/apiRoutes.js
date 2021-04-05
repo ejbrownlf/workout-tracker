@@ -14,7 +14,15 @@ module.exports = () => {
 
     router.post('/workouts');
 
-    router.put('/workouts',);
+    router.put('/workouts/:id', (req, res) => {
+        Workout.updateOne({ _id: req.params.id}, { $push: { exercises: req.body } })
+            .then(dbWorkout => {
+                res.json(dbWorkout)
+            })
+            .catch(err => {
+                res.status(400).json(err)
+            })
+    });
 
     router.get('/workouts/range');
     
