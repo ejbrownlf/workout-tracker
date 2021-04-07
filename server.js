@@ -14,7 +14,12 @@ app.use(express.static("public"));
 app.use('/api', require('./routes/apiRoutes'))
 app.use(require('./routes/htmlRoutes'));
 
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/wrkkouttracker", { useNewUrlParser: true });
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/wrkkouttracker", { 
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    useCreateIndex: true,
+    useFindAndModify: false
+});
 
 
 app.listen(3333, () => {
